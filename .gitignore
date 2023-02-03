@@ -1,0 +1,7 @@
+__pycache__
+app
+dataset
+mlruns
+templates
+
+config.py
