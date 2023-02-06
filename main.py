@@ -10,6 +10,7 @@ import pandas as pd
 app = FastAPI(cors=False)
 
 df = pd.read_csv('test_sample.csv')
+print(df)
 
 predictions: List[Prediction] = [
 ]
@@ -25,7 +26,7 @@ with open('test_sample.csv', newline='') as csv_file:
         ids.append(IdList(id = id))
 
 
-ids = df['SK_ID_CURR']
+#ids = df['SK_ID_CURR']
 
 X_test = pd.read_csv('test_encoded.csv')
 X_test.fillna(X_test.median(), inplace=True)
