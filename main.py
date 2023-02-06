@@ -31,13 +31,13 @@ predictions: List[Prediction] = [
 ids: List[IdList] = [
 ]
 
-with open('test_sample.csv', newline='') as csv_file:
-    reader = csv.reader(csv_file)
-    headers = next(reader, None)  # Get the headers.
-    id_index = headers.index("SK_ID_CURR")  # Find the index of the "id" column.
-    for row in reader:
-        id = row[id_index]  # Extract the value of the "id" column from the current row.
-        ids.append(IdList(id = id))
+# with open('test_sample.csv', newline='') as csv_file:
+#     reader = csv.reader(csv_file)
+#     headers = next(reader, None)  # Get the headers.
+#     id_index = headers.index("SK_ID_CURR")  # Find the index of the "id" column.
+#     for row in reader:
+#         id = row[id_index]  # Extract the value of the "id" column from the current row.
+#         ids.append(IdList(id = id))
 
 df = pd.read_csv('test_sample.csv')
 
