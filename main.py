@@ -14,7 +14,7 @@ df = pd.read_csv('test_sample.csv')
 # ids: List[IdList] = [
 # ]
 
-ids = df['SK_CURR_ID']
+ids = df['SK_ID_CURR']
 
 X_test = pd.read_csv('test_encoded.csv')
 X_test.fillna(X_test.median(), inplace=True)
