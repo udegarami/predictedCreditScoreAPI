@@ -1,6 +1,8 @@
 from typing import List
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
+from models import Prediction, IdList
+import csv
 import json
 import joblib
 import pandas as pd
@@ -9,10 +11,19 @@ app = FastAPI(cors=False)
 
 df = pd.read_csv('test_sample.csv')
 
-# predictions: List[Prediction] = [
-# ]
-# ids: List[IdList] = [
-# ]
+predictions: List[Prediction] = [
+]
+ids: List[IdList] = [
+]
+
+with open('test_sample.csv', newline='') as csv_file:
+    reader = csv.reader(csv_file)
+    headers = next(reader, None)  # Get the headers.
+    id_index = headers.index("SK_ID_CURR")  # Find the index of the "id" column.
+    for row in reader:
+        id = row[id_index]  # Extract the value of the "id" column from the current row.
+        ids.append(IdList(id = id))
+
 
 ids = df['SK_ID_CURR']
 
