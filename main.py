@@ -1,7 +1,6 @@
 from typing import List
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
-import csv
 import json
 import joblib
 import pandas as pd
@@ -27,7 +26,7 @@ def read_favicon():
 async def fetch_prediction(predictionId: int):
     calib_fit = joblib.load('calib_pipeline.joblib')
     id = predictionId
-    test = pd.read_csv('test_encoded.csv')
+    test = X_test
     test_row = test[test['SK_ID_CURR'] == id]
     test_pred = calib_fit.predict_proba(test_row.values.reshape(1, -1))
     df_out = pd.DataFrame(columns=['SK_ID_CURR','TARGET'])
@@ -36,7 +35,7 @@ async def fetch_prediction(predictionId: int):
 
 @app.get("/api/v1/characteristics/{id}")
 async def fetch_characteristics(id: int):
-    test = pd.read_csv('test_encoded.csv')
+    test = X_test
     filtered_test = test.loc[test['SK_ID_CURR'] == id]
     if filtered_test.empty:
         return json.dumps({'error': f'No data found for id {id}'})
