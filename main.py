@@ -9,6 +9,13 @@ app = FastAPI(cors=False)
 
 df = pd.read_csv('test_sample.csv')
 
+# predictions: List[Prediction] = [
+# ]
+# ids: List[IdList] = [
+# ]
+
+ids = df['SK_CURR_ID']
+
 X_test = pd.read_csv('test_encoded.csv')
 X_test.fillna(X_test.median(), inplace=True)
 indices_test = X_test['SK_ID_CURR']
@@ -21,6 +28,10 @@ def read_root():
 @app.get("/favicon.ico")
 def read_favicon():
     return {"Favicon": "OK"}
+
+@app.get("/api/v1/df")
+async def df():
+    return ids
 
 @app.get("/api/v1/predict/{predictionId}")
 async def fetch_prediction(predictionId: int):
