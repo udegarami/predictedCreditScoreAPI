@@ -10,30 +10,22 @@ import pandas as pd
 import json
 from sklearn.neighbors import KNeighborsClassifier
 from fastapi.responses import JSONResponse
+from starlette.middleware.cors import CORSMiddleware
 
-# from starlette.applications import Starlette
-# from starlette.middleware.cors import CORSMiddleware
-
-# app = Starlette()
+app = FastAPI()
 
 # origins = [
 #     "http://localhost:8000",
-#     "https://frontend.com",
+#     "https://predictedcreditscore.herokuapp.com/",
 # ]
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
-
-@app.route("/")
-async def root(request):
-    return {"message": "Hello World"}
-
-app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 df = pd.read_csv('test_sample.csv')
 print(df)
