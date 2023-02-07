@@ -11,7 +11,29 @@ import json
 from sklearn.neighbors import KNeighborsClassifier
 from fastapi.responses import JSONResponse
 
-app = FastAPI(cors=False)
+# from starlette.applications import Starlette
+# from starlette.middleware.cors import CORSMiddleware
+
+# app = Starlette()
+
+# origins = [
+#     "http://localhost:8000",
+#     "https://frontend.com",
+# ]
+
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
+@app.route("/")
+async def root(request):
+    return {"message": "Hello World"}
+
+app = FastAPI()
 
 df = pd.read_csv('test_sample.csv')
 print(df)
