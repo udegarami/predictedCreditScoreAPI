@@ -28,7 +28,7 @@ app.add_middleware(
 )
 
 df = pd.read_csv('test_sample.csv')
-print(df)
+
 
 predictions: List[Prediction] = [
 ]
@@ -96,7 +96,6 @@ async def fetch_characteristics(id: int):
     return json.dumps({'income_to_annuity_ratio': income_to_annuity_ratio, 'proportion_life_employed': proportion_life_employed})
 
 X_train = pd.read_csv('train_encoded.csv')
-print(X_train)
 X_test = pd.read_csv('test_encoded.csv')
 train_old = pd.read_csv('train_sample.csv')
 X_train = X_train.merge(train_old[['SK_ID_CURR', 'TARGET']], on='SK_ID_CURR', how='left')
