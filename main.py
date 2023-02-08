@@ -121,4 +121,4 @@ async def fetch_neighbors(id: int):
         neighbor_ids = indices.iloc[neighbors[0]].values
         return json.dumps(neighbor_ids.tolist())
     else:
-        raise HTTPException(status_code=404, detail=f"Customer with ID {id} not found.")
+        raise HTTPException(status_code=404, detail=f"Customer with ID {id} not found")
