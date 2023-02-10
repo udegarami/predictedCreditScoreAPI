@@ -1,0 +1,29 @@
+README for FastAPI Backend
+
+Introduction
+
+The purpose of the API is to provide a prediction of the likelihood of a customer to pay back a loan. The API is built using FastAPI and the prediction is made with an XGB Classifier model optimized on the Fbeta score with beta=0. The 10 nearest neighbors are found using KNN. The data used for the model is stored in a CSV file with anonymized banking data.
+
+How to use
+
+    Locally:
+
+You can start the application locally by running uvicorn main:app --reload in your terminal. 
+
+To see the available endpoints and their documentation, please visit http://127.0.0.1/docs to find a SwaggerUI interface.
+
+    Hosted: 
+
+Alternatively, the API is already hosted on Heroku at https://predictedcreditscoreapi.herokuapp.com.
+
+To see the available endpoints and their documentation, please visit https://predictedcreditscoreapi.herokuapp.com/docs to find a SwaggerUI interface.
+
+Endpoints
+
+The API provides endpoints for the prediction, the 10 nearest neighbors, the Shap analysis as a PNG file, and the data stability report as a HTML file.
+
+To make a prediction, simply make a request to the API with the customer ID. The API will return the prediction, as well as the 10 most similar customers from the training database.
+
+Contact Information
+
+For more information or questions, you can contact the the developer at giangreco.marco@gmx.ch. Contributions are not possible for this project as it is part of a training course.
